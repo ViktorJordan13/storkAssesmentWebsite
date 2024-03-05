@@ -11,5 +11,5 @@ export default {
       sans: ['var(--font-sans)', ...fontFamily.sans],
     },
   },
-  plugins: [require("daisyui")],
+  plugins: [tailwindTypography],
 } satisfies Config;
