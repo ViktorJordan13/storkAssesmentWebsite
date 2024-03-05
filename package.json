@@ -11,6 +11,8 @@
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "eslint src --fix && pnpm format",
+    "type-check": "tsc --noEmit",
+    "check:turbo": "pnpm dlx turbo@latest lint type-check",
     "format": "prettier --write src",
     "up-interactive": "pnpm up -i",
     "up-latest": "pnpm up-interactive -L",
