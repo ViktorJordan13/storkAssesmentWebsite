@@ -4,7 +4,7 @@ const Home: NextPage = () => {
   return (
     <div className="flex min-h-screen w-full flex-col">
       <main className="flex-grow bg-gray-100 px-4 sm:px-6 lg:px-8">
-        <h1 className="mb-14 mb-2 mt-20 text-center text-5xl font-bold">
+        <h1 className="mb-16 mb-2 mt-20 text-center text-5xl font-bold">
           AI Tools Directory
         </h1>
         <input
