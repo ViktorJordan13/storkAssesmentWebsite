@@ -2,66 +2,67 @@ import type { NextPage } from 'next';
 
 const Home: NextPage = () => {
   return (
-    <div className="min-h-screen">
-      <div className="fixed left-0 right-0 top-0 z-10 bg-gray-100 px-4 py-6 text-center shadow-md">
-        <h1 className="mb-2 text-4xl font-bold">AI Tools Directory</h1>
+    <div className="flex min-h-screen w-full flex-col">
+      <main className="flex-grow bg-gray-100 px-4 sm:px-6 lg:px-8">
+        <h1 className="mb-14 mb-2 mt-20 text-center text-5xl font-bold">
+          AI Tools Directory
+        </h1>
         <input
           type="text"
           placeholder="Find best AI tools for specific tasks in 2024"
-          className="mx-auto mb-2 mt-12 w-full max-w-4xl rounded-md border-2 border-orange-300 p-2 text-xs"
+          className="mx-auto mb-2 block w-full max-w-md rounded-md border-2 border-orange-300 p-2 text-xs"
         />
-        <p className="mb-4 text-sm text-gray-600">
+        <p className="mb-4 text-center text-sm text-gray-500">
           Search 9000+ AI Tools & Agents
         </p>
-        <div className="mb-2 mt-8 flex flex-wrap justify-center gap-2">
-          <button className="rounded border border-gray-300 bg-white px-3 py-1 text-xs font-semibold text-gray-600 shadow">
+        <div className="mb-2 mt-8 flex flex-wrap justify-center gap-2" />
+        <div className="flex flex-wrap justify-center gap-2">
+          <button className="bg-white px-3 py-1 text-xs font-semibold text-gray-500">
             Design
           </button>
-          <button className="rounded border border-gray-300 bg-white px-3 py-1 text-xs font-semibold text-gray-600 shadow">
+          <button className="bg-white px-3 py-1 text-xs font-semibold text-gray-500">
             Audio
           </button>
-          <button className="rounded border border-gray-300 bg-white px-3 py-1 text-xs font-semibold text-gray-600 shadow">
+          <button className="bg-white px-3 py-1 text-xs font-semibold text-gray-500">
             Video
           </button>
-          <button className="rounded border border-gray-300 bg-white px-3 py-1 text-xs font-semibold text-gray-600 shadow">
+          <button className="bg-white px-3 py-1 text-xs font-semibold text-gray-500">
             Games
           </button>
-          <button className="rounded border border-gray-300 bg-white px-3 py-1 text-xs font-semibold text-gray-600 shadow">
+          <button className="bg-white px-3 py-1 text-xs font-semibold text-gray-500">
             Financial
           </button>
-          <button className="rounded border border-gray-300 bg-white px-3 py-1 text-xs font-semibold text-gray-600 shadow">
+          <button className="bg-white px-3 py-1 text-xs font-semibold text-gray-500">
             Legal
           </button>
-          <button className="rounded border border-gray-300 bg-white px-3 py-1 text-xs font-semibold text-gray-600 shadow">
+          <button className="bg-white px-3 py-1 text-xs font-semibold text-gray-500">
             Well-Being & Health
           </button>
-          <button className="rounded border border-gray-300 bg-white px-3 py-1 text-xs font-semibold text-gray-600 shadow">
+          <button className="bg-white px-3 py-1 text-xs font-semibold text-gray-500">
             Lifestyle
           </button>
-          <button className="rounded border border-gray-300 bg-white px-3 py-1 text-xs font-semibold text-gray-600 shadow">
+          <button className="bg-white px-3 py-1 text-xs font-semibold text-gray-500">
             Education
           </button>
         </div>
-        <div className="flex flex-wrap justify-center gap-2">
-          <button className="rounded border border-gray-300 bg-white px-3 py-1 text-xs font-semibold text-gray-600 shadow">
+        <div className="flex flex-wrap justify-center gap-2 pt-4">
+          <button className="bg-white px-3 py-1 text-xs font-semibold text-gray-500">
             Data Analysis
           </button>
-          <button className="rounded border border-gray-300 bg-white px-3 py-1 text-xs font-semibold text-gray-600 shadow">
+          <button className="bg-white px-3 py-1 text-xs font-semibold text-gray-500">
             Programming
           </button>
-          <button className="rounded border border-gray-300 bg-white px-3 py-1 text-xs font-semibold text-gray-600 shadow">
+          <button className="bg-white px-3 py-1 text-xs font-semibold text-gray-500">
             Writing
           </button>
-          <button className="rounded border border-gray-300 bg-white px-3 py-1 text-xs font-semibold text-gray-600 shadow">
+          <button className="bg-white px-3 py-1 text-xs font-semibold text-gray-500">
             Images & Photos
           </button>
-          <button className="rounded border border-gray-300 bg-white px-3 py-1 text-xs font-semibold text-gray-600 shadow">
+          <button className="bg-white px-3 py-1 text-xs font-semibold text-gray-500">
             Productivity
           </button>
         </div>
-      </div>
-
-      <div className="pt-60" />
+      </main>
     </div>
   );
 };
