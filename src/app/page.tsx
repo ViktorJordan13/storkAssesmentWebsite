@@ -3,8 +3,14 @@
 import type { NextPage } from 'next';
 import { useEffect, useState } from 'react';
 
+interface Tool {
+  id: string;
+  title: string;
+  url: string;
+}
+
 const Home: NextPage = () => {
-  const [aiTools, setAiTools] = useState([]);
+  const [aiTools, setAiTools] = useState<Tool[]>([]);
 
   useEffect(() => {
     // Actual fetching data from your API
