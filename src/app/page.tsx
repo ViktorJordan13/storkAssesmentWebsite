@@ -1,6 +1,35 @@
+'use client';
+
 import type { NextPage } from 'next';
+import { useEffect, useState } from 'react';
 
 const Home: NextPage = () => {
+  const [aiTools, setAiTools] = useState([]);
+
+  useEffect(() => {
+    // Actual fetching data from your API
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost:80/api/entries', {
+          headers: {
+            Authorization:
+              'Bearer NGM0MTFhMDljMjYxNTUzYmI2ODg4MDNhZmFhOTYzNGQ2NmFkZDdiZjBjYTY4ZmM1Y2Y3MWE3NjAxODY0YzhiZQ',
+          },
+        });
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        // eslint-disable-next-line no-underscore-dangle
+        setAiTools(data._embedded.items);
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.error('There was a problem with fetching AI Tools:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
   return (
     <div className="flex min-h-screen w-full flex-col">
       <main className="flex-grow bg-gray-100 px-4 sm:px-6 lg:px-8">
@@ -61,6 +90,30 @@ const Home: NextPage = () => {
           <button className="bg-white px-3 py-1 text-xs font-semibold text-gray-500">
             Productivity
           </button>
+        </div>
+        <div className="mt-8">
+          {aiTools.length > 0 ? (
+            aiTools.map((tool) => (
+              <div
+                key={tool.id}
+                className="mb-4 rounded-lg bg-white p-4 shadow-lg"
+              >
+                <h3 className="text-lg font-semibold">{tool.title}</h3>
+                <p>
+                  <a
+                    href={tool.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-500 hover:underline"
+                  >
+                    {tool.url}
+                  </a>
+                </p>
+              </div>
+            ))
+          ) : (
+            <p className="text-center">Loading AI Tools...</p>
+          )}
         </div>
       </main>
     </div>
