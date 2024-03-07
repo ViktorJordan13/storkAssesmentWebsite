@@ -11,31 +11,44 @@ interface Tool {
 
 const Home: NextPage = () => {
   const [aiTools, setAiTools] = useState<Tool[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Actual fetching data from your API
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:80/api/entries', {
+        const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+        const targetUrl =
+          'https://lionfish-app-jdnbs.ondigitalocean.app/cleaned_articles';
+        const response = await fetch(proxyUrl + targetUrl, {
           headers: {
-            Authorization:
-              'Bearer NGM0MTFhMDljMjYxNTUzYmI2ODg4MDNhZmFhOTYzNGQ2NmFkZDdiZjBjYTY4ZmM1Y2Y3MWE3NjAxODY0YzhiZQ',
+            'X-Requested-With': 'XMLHttpRequest',
           },
         });
+
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
+
         const data = await response.json();
-        // eslint-disable-next-line no-underscore-dangle
-        setAiTools(data._embedded.items);
+
+        const mappedData = data.map((item) => ({
+          id: item.id.toString(),
+          title: item.title,
+          url: item.url,
+        }));
+
+        setAiTools(mappedData);
       } catch (error) {
         // eslint-disable-next-line no-console
-        console.error('There was a problem with fetching AI Tools:', error);
+        console.error(error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
     fetchData();
   }, []);
+
   return (
     <div className="flex min-h-screen w-full flex-col">
       <main className="flex-grow bg-gray-100 px-4 sm:px-6 lg:px-8">
@@ -98,7 +111,10 @@ const Home: NextPage = () => {
           </button>
         </div>
         <div className="mt-8">
-          {aiTools.length > 0 ? (
+          {/* eslint-disable-next-line no-nested-ternary */}
+          {isLoading ? (
+            <p className="text-center">Loading AI Tools...</p>
+          ) : aiTools.length > 0 ? (
             aiTools.map((tool) => (
               <div
                 key={tool.id}
@@ -112,13 +128,13 @@ const Home: NextPage = () => {
                     rel="noopener noreferrer"
                     className="text-blue-500 hover:underline"
                   >
-                    {tool.url}
+                    Visit Tool
                   </a>
                 </p>
               </div>
             ))
           ) : (
-            <p className="text-center">Loading AI Tools...</p>
+            <p className="text-center">No AI Tools found.</p>
           )}
         </div>
       </main>
