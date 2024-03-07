@@ -31,11 +31,13 @@ const Home: NextPage = () => {
 
         const data = await response.json();
 
-        const mappedData = data.map((item) => ({
-          id: item.id.toString(),
-          title: item.title,
-          url: item.url,
-        }));
+        const mappedData = data.map(
+          (item: { id: { toString: () => any }; title: any; url: any }) => ({
+            id: item.id.toString(),
+            title: item.title,
+            url: item.url,
+          })
+        );
 
         setAiTools(mappedData);
       } catch (error) {
